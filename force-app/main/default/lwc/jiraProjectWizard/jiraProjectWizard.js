@@ -1,5 +1,6 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import checkJiraKeyAvailable from '@salesforce/apex/JiraProjectWizardController.checkJiraKeyAvailable';
+import createProject from '@salesforce/apex/JiraProjectWizardController.createProject';
 
 export default class JiraProjectWizard extends LightningElement {
 
@@ -13,6 +14,8 @@ export default class JiraProjectWizard extends LightningElement {
         ]
     }
 
+    @api recordId;
+    @api objectNameId;
     key; 
     projectName;
     projectLead;
@@ -34,5 +37,18 @@ export default class JiraProjectWizard extends LightningElement {
     async handleKeyCheck(){
         this.available = await checkJiraKeyAvailable({key: this.key});
         this.notCheckedKey = false;
+    }
+
+    async handleProjectCreate(){
+        try {
+            await createProject({
+                key: this.key,
+                projectName: this.projectName,
+                accId: this.recordId,
+                userId: this.projectLead
+            })
+        } catch(e) {
+            console.error(e);
+        }
     }
 }

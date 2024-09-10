@@ -25,6 +25,13 @@ public with sharing class JiraCallout {
     }
 
     /**\
+     * @param key Project key. Example: ACME 
+     */    
+    public static HttpResponse getProject(String key){
+        return httpHelper('project/' + key, 'GET', null);
+    }
+
+    /**\
      * @param body Request body for /project endpoint 
      */    
     public static HttpResponse createProject(String body){

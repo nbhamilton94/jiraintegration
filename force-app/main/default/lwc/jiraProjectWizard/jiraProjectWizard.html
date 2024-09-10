@@ -1,0 +1,17 @@
+<template>
+    <!-- sldsValidatorIgnoreNextLine -->
+    <lightning-quick-action-panel header="Create JIRA Project">
+        <lightning-input type="text" label="Project Key" onchange={handleKeyChange} value={key} max-length="10"></lightning-input>
+        <lightning-button variant="base" label="Check Key" title="Check Key" onclick={handleKeyCheck} class="slds-var-m-left_x-small"></lightning-button>
+        <template lwc:if={notCheckedKey}></template>
+        <template lwc:elseif={available}><lightning-icon icon-name="utility:check" alternative-text="Available" variant="success"></lightning-icon></template>
+        <template lwc:else><lightning-icon icon-name="utility:close" alternative-text="Not Available" variant="error"></lightning-icon></template>
+        <lightning-input tpye="text" label="Project Name" onchange={handleNameChange} value={projectName}></lightning-input>
+        <lightning-record-picker object-api-name="User" label="Project Lead" filter={filter} onchange={handleLeadChange}></lightning-record-picker>
+        <div slot="footer">
+            <lightning-button variant="brand" label="Create Project" title="Create Project"></lightning-button>
+        </div>        
+    </lightning-quick-action-panel>
+    
+
+</template>

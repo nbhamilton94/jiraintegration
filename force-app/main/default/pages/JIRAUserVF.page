@@ -1,0 +1,3 @@
+<apex:page standardcontroller="User" extensions="JiraUserController" action="{!createUser}">
+
+</apex:page>

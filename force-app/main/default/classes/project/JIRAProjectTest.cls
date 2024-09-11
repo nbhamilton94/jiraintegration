@@ -49,4 +49,14 @@ public class JIRAProjectTest {
 
         System.assert(String.isNotBlank(afterUpdate.JIRA_Project_Id__c), 'JIRA Project Id Never Set');
     }
+
+    //adding test methods for our methods from the lightning project wizard
+    @isTest(seeAllData=false)
+    static void testCheckKey(){
+        Test.setMock(HttpCalloutMock.class, new Mock());
+        Test.startTest();
+        Boolean available = JiraProjectWizardController.checkJiraKeyAvailable('KEY');
+        Test.stopTest();
+        System.assert(!available, 'key should not be available');
+    }
 }

@@ -53,4 +53,12 @@ public with sharing class JiraCallout {
     public static HttpResponse getUser(String email){
         return httpHelper('user/search?query='+ email, 'GET', null);
     }
+
+    /**
+     * @param version Jira version data
+     * 
+     */
+     public static HttpResponse createVersion(String version){
+        return httpHelper('version', 'POST', version);
+     }
 }

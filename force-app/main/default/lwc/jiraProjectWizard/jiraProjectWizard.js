@@ -1,4 +1,6 @@
 import { LightningElement, api } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { CloseActionScreenEvent } from 'lightning/actions';
 import checkJiraKeyAvailable from '@salesforce/apex/JiraProjectWizardController.checkJiraKeyAvailable';
 import createProject from '@salesforce/apex/JiraProjectWizardController.createProject';
 
@@ -21,6 +23,7 @@ export default class JiraProjectWizard extends LightningElement {
     projectLead;
     available;
     notCheckedKey = true;
+    projectCreationDisable = true;
 
     handleKeyChange(event){
         this.key = event.target.value;
@@ -28,15 +31,23 @@ export default class JiraProjectWizard extends LightningElement {
 
     handleNameChange(event){
         this.projectName = event.target.value;
+        this.checkProjectCreation();
     }
 
     handleLeadChange(event){
         this.projectLead = event.detail.recordId;
+        this.checkProjectCreation();
     }
 
     async handleKeyCheck(){
         this.available = await checkJiraKeyAvailable({key: this.key});
         this.notCheckedKey = false;
+        this.checkProjectCreation();
+    }
+
+    checkProjectCreation() {
+        this.projectCreationDisable = !this.available || this.projectLead === undefined || this.notCheckedKey;
+        console.log(this.projectCreationDisable);
     }
 
     async handleProjectCreate(){
@@ -46,9 +57,25 @@ export default class JiraProjectWizard extends LightningElement {
                 projectName: this.projectName,
                 accId: this.recordId,
                 userId: this.projectLead
-            })
+            });
+            this.dispatchEvent(new CloseActionScreenEvent());  
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Jira Project Created",
+                    variant: "success"
+                }) 
+            );
+                      
         } catch(e) {
-            console.error(e);
+            console.log(e);
+            this.dispatchEvent(            
+                new ShowToastEvent({
+                    title: "Error",
+                    message: "Could not create JIRA project",
+                    variant: "error"
+                })
+            );
         }
     }
 }

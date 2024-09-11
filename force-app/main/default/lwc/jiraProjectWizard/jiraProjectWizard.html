@@ -9,8 +9,8 @@
         <lightning-input tpye="text" label="Project Name" onchange={handleNameChange} value={projectName}></lightning-input>
         <lightning-record-picker object-api-name="User" label="Project Lead" filter={filter} onchange={handleLeadChange}></lightning-record-picker>
         <div slot="footer">
-            <lightning-button variant="brand" label="Create Project" title="Create Project" onclick={handleProjectCreate}></lightning-button>
-        </div>        
+            <lightning-button disabled={projectCreationDisable} variant="brand" label="Create Project" title="Create Project" onclick={handleProjectCreate}></lightning-button>
+        </div>    
     </lightning-quick-action-panel>
     
 

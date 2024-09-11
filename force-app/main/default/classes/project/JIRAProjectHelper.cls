@@ -1,7 +1,7 @@
 public with sharing class JIRAProjectHelper {
     public static Account createOrUpdateProject(Account acc, String projectLeadId){
         JIRAProjectJSON proj = JIRAProjectMapping.mapAccountToProject(acc, projectLeadId);
-        HttpResponse res = JiraCallout.createProject(JSON.serialize(proj, true));
+        HttpResponse res; //= JiraCallout.createProject(JSON.serialize(proj, true));
         
         // Create if no Jira Id exists
         if(String.isBlank(acc.JIRA_Project_Id__c)) {

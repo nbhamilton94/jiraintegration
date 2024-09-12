@@ -59,4 +59,6 @@ public class JIRAProjectTest {
         Test.stopTest();
         System.assert(!available, 'key should not be available');
     }
+
+    
 }

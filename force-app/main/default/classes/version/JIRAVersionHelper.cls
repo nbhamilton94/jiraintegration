@@ -9,7 +9,7 @@ public with sharing class JIRAVersionHelper {
 
         JIRAVersionJSON versionResponse = JIRAVersionJSON.parse(res.getBody());
 
-        JIRAVersionMapping.mapVersionToOpportunity(version, opp);
+        JIRAVersionMapping.mapVersionToOpportunity(versionResponse, opp);
         return opp;
     }
 }

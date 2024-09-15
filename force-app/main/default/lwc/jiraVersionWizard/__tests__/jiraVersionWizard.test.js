@@ -1,4 +1,4 @@
-import { createElement } from 'lwc';
+import { createElement } from '@lwc/engine-dom';
 import JiraVersionWizard from 'c/jiraVersionWizard';
 
 describe('c-jira-version-wizard', () => {

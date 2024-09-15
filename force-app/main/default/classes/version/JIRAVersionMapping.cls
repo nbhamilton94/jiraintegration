@@ -17,4 +17,4 @@ public with sharing class JIRAVersionMapping {
         opp.JIRA_Version_Id__c = String.valueOf(version.id);
         return opp;
     }
-} 
+}

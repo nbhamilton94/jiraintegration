@@ -1,12 +1,30 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
-      "default": true
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app/auth",
+      "default": false,
+      "package": "Jira Integration - Auth",
+      "versionDescription": ""
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app/auth",
+      "default": true,
+      "package": "Jira Integration - Core",
+      "versionDescription": ""
     }
   ],
   "name": "jiraintegration",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "61.0"
+  "sourceApiVersion": "60.0",
+  "packageAliases": {
+    "Jira Integration - Auth": "0Hoaj0000000DWjCAM",
+    "Jira Integration - Core": "0Hoaj0000000DYLCA2",
+    "Jira Integration - Auth@0.1.0-1": "04taj00000035b3AAA",
+    "Jira Integration - Core@0.1.0-1": "04taj00000035cfAAA"
+  }
 }

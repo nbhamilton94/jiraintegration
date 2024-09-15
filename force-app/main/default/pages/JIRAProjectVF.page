@@ -1,3 +1,3 @@
-<apex:page standardcontroller="Account" extensions="JiraProjectController" action="{!createProject}">
+<apex:page standardcontroller="Account" extensions="JIRAProjectController" action="{!createProject}">
 
 </apex:page>

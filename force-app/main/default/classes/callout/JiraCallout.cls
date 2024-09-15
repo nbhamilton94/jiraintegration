@@ -61,4 +61,17 @@ public with sharing class JiraCallout {
      public static HttpResponse createVersion(String version){
         return httpHelper('version', 'POST', version);
      }
+
+    /**
+     * @param params Jira Issue search query parameters
+     * the reason taking a map is to dynamically give URl parameters based on the map of parameters to values
+     */
+     public static HttpResponse getIssues(Map<String, String> params){
+        String endpoint = 'search?';
+        for(String key: params.keySet()){
+            endpoint += key + '=' + params.get(key) + '&';
+        }
+
+        return httpHelper(endpoint, 'GET', null);
+     }
 }

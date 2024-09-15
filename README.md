@@ -1,18 +1,21 @@
-# Salesforce DX Project: Next Steps
+# Salesforce <-> Jira Integration 
+This repository is a Salesforce and Jira integraiton that allows a business to manage their support process through JIRA and their sales process through salesforce.
+- We want to be able to kick off our Jira support process using data that exists inside of salesforce. This is done by having a wizard where the user enters the necessary data for each project and verify the data from Jira.
+- Every opportunity is associated with a version in Jira.
+- All issues from Jira will be associated with a case from Salesforce. The related project and version ids allow us to link back to the opportunity and account in Salesforce. This information is visible on the Case record.
+- Issues have the option for a one-time sync or a scheduled sync.
+    
+## Tools I used
+- Visual Studio Code with the SFcli extensions
+- Postman to simulate REST callouts
+- A Salesforce Developer Edition Org
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Concepts Demonstrated
+- Lightning Web Components: Created lightning web components that are displayed through a button/quick action on the Account, Opportunity, and Case Objects.
+- Batch Apex: Used for the hourly sync of jira issues with salesforce
+- Queueable Apex: Used for a one time sync of jira issues with salesforce
+- Named Credendials: Set up the Jira external credentials with a Basic Auth protocol and Salesforce Named credential to my jira organizatoin 
+- Basic Authentication: Create API key from Jira and use it as a part of my external credentials
+- Permission Sets: Configure the External Credential Principal Access and add my Jira External Credentials to the "Enabled" section, and assign the permission set to users who will be using my integration
+- Unlocked Packages: Packaged and Deployed this using unlocked packages 
 
-## How Do You Plan to Deploy Your Changes?
-
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)

@@ -14,7 +14,7 @@ This repository is a Salesforce and Jira integraiton that allows a business to m
 - Lightning Web Components: Created lightning web components that are displayed through a button/quick action on the Account, Opportunity, and Case Objects.
 - Batch Apex: Used for the hourly sync of jira issues with salesforce
 - Queueable Apex: Used for a one time sync of jira issues with salesforce
-- Named Credendials: Set up the Jira external credentials with a Basic Auth protocol and Salesforce Named credential to my jira organizatoin 
+- Named Credentials: Set up the Jira external credentials with a Basic Auth protocol and Salesforce Named credential to my jira organizatoin 
 - Basic Authentication: Create API key from Jira and use it as a part of my external credentials
 - Permission Sets: Configure the External Credential Principal Access and add my Jira External Credentials to the "Enabled" section, and assign the permission set to users who will be using my integration
 - Unlocked Packages: Packaged and Deployed this using unlocked packages 
